@@ -1,0 +1,62 @@
+﻿<div ng-controller="MyCtrl1" class="container-fluid">
+    <div class="row-fluid">
+        <div class="span2">
+            <ul class="nav nav-list">
+                <li>
+                    <label class="nav-header">
+                        Query Stats</label></li>
+                <li>Total Results = {{searchResults.Stats.TotalResults}}</li>
+                <li>Skipped Results = {{searchResults.Stats.TotalResults}}</li>
+                <li>Index = {{searchResults.Stats.IndexName}}</li>
+                <li>Stale = {{searchResults.Stats.IsStale}}</li>
+            </ul>
+            <h6>Facets</h6>
+            <ul ng-repeat="facet in searchResults.FacetedResults" class="nav nav-list">
+                <li>
+                    <label class="tree-toggler nav-header">
+                        {{facet.Name }}</label>
+                    <ul ng-repeat="facetValue in facet.Values.Values | orderBy:'Hits':true | limitTo:5 " class="nav nav-list tree">
+                        <li><a href="#" ng-click="setFacet(facet,facetValue)" eat-click>{{facetValue.Range | humanize | titleize }} <span class="badge pull-right">{{facetValue.Hits}}</span></a> </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="span10">
+
+            <div class="input-append span12">
+                <form ng-submit="submitRequest()">
+                    <input class="span8" id="appendedInputButtons" type="text" ng-model="searchTerms" placeholder="Search...">
+                    <button class="btn" type="button">Search</button>
+                </form>
+            </div>
+            <span ng-show="searchResults.Suggestions" class="help-block">Did you mean <span ng-repeat="suggestion in searchResults.Suggestions">
+                <em><a href="#" ng-click="selectSuggestion(suggestion)" eat-click>{{suggestion}}</a></em>
+            </span>
+                ? 
+            </span>
+
+
+
+        </div>
+        <div class="span10">
+            <span ng-repeat="facetFilter in searchResults.FacetedFilterApplied">
+                <span class="label label-info" ng-click="removeFacet(facetFilter)">{{facetFilter.facet}}:{{facetFilter.selectedValue|uppercase}} &times</span>
+            </span>
+
+            <ol>
+                <li ng-repeat="item in searchResults.TitlesFound">
+                    <a href="#/title/{{item.Id}}">{{item.Title}}</a>
+                    <span class="label pull-right">{{item.Score }}</span>
+                    <br />
+                    <i>{{item.PlotSimple}}</i>
+                    <br />
+                    <div>
+                        <blockquote ng-repeat="subItem in item.Highlights">
+                            &hellip; <span ng-bind-html="subItem"></span>
+                        </blockquote>
+                    </div>
+                </li>
+            </ol>
+        </div>
+    </div>
+</div>
