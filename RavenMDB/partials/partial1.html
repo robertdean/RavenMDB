@@ -1,4 +1,4 @@
-﻿<div ng-controller="MyCtrl1" class="container-fluid">
+<div ng-controller="MyCtrl1" class="container-fluid">
     <div class="row-fluid">
         <div class="span2">
             <ul class="nav nav-list">
@@ -26,7 +26,7 @@
             <div class="input-append span12">
                 <form ng-submit="submitRequest()">
                     <input class="span8" id="appendedInputButtons" type="text" ng-model="searchTerms" placeholder="Search...">
-                    <button class="btn" type="button">Search</button>
+                    <button class="btn" type="submit">Search</button>
                 </form>
             </div>
             <span ng-show="searchResults.Suggestions" class="help-block">Did you mean <span ng-repeat="suggestion in searchResults.Suggestions">
