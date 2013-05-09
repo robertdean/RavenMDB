@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -109,8 +109,8 @@
     <Content Include="js\lib\underscore.string.js" />
     <Content Include="js\services.js" />
     <Content Include="ng-upload-sample.html" />
-    <Content Include="partials\partial1.html" />
-    <Content Include="partials\partial2.html" />
+    <Content Include="partials\search.html" />
+    <Content Include="partials\titleview.html" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\movies1.json" />
