@@ -1,6 +1,5 @@
 ﻿using System.Web.Http;
 using Raven.Client;
-using RavenDBEval10.WebUI;
 
 namespace RavenMDB.Controllers
 {

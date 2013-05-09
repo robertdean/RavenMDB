@@ -28,11 +28,12 @@ namespace RavenMDB
         {
             var movies = new List<Movie>();
             var movieParser = new MovieParser();
-            movies.AddRange(movieParser.GetMoviesFromJsonFile( "~/App_Data/movies1.json"));
+            movies.AddRange(movieParser.GetMoviesFromJsonFile( "~/movies1.json"));
             SetupFacets(GetFacetsToUse(), Store);
             SaveMovies(movies, Store);
-            /*Store.DatabaseCommands.PutIndex(new ComplexMovieIndex().IndexName,
-                                            new ComplexMovieIndex().CreateIndexDefinition());*/
+            if(!Store.DatabaseCommands.GetIndexNames(0,10).Contains("ComplexMovieIndex"))
+                Store.DatabaseCommands.PutIndex(new ComplexMovieIndex().IndexName,
+                                            new ComplexMovieIndex().CreateIndexDefinition());
         }
         private static void SaveMovies(IEnumerable<Movie> movies, IDocumentStore store)
         {
@@ -41,7 +42,7 @@ namespace RavenMDB
             {
                 foreach (var movie in movieArray)
                 {
-                    if (movieArray.Where(x => x.Id == movie.Id).Count() == 1)
+                    if (movieArray.Count(x => x.Id == movie.Id) == 1)
                         session.Store(movie);
                 }
                 session.SaveChanges();
