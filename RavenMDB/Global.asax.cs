@@ -36,7 +36,7 @@ namespace RavenDBEval10.WebUI
             //Store = new EmbeddableDocumentStore { DataDirectory = AppDomain.CurrentDomain.BaseDirectory+@"\App_data\MovieData"};
             Store = new DocumentStore
                 {
-                    ConnectionStringName = "RAVENHQ_CONNECTION_STRING"
+                    ConnectionStringName = "RavenDB"
                 }.Initialize();
             
             new RavenSetup(Store);
