@@ -9,7 +9,6 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using Raven.Client;
 using Raven.Client.Document;
-using Raven.Client.Embedded;
 using Raven.Client.Indexes;
 using RavenMDB;
 using RavenMDB.App_Start;
