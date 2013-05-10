@@ -17,7 +17,12 @@ angular.module('myApp.filters', []).
         return function (text) {
             return _.str.humanize(text);
         };
+    }])
+    .filter('truncate', [function () {
+        return function (text,limit) {
+            return _.str.truncate(text,limit);
+        };
     }]);
-;
+
 
 
