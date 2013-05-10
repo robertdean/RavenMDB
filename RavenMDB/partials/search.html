@@ -7,6 +7,8 @@
                 <li>Skipped Results = {{searchResults.Stats.TotalResults}}</li>
                 <li>Index = {{searchResults.Stats.IndexName}}</li>
                 <li>Stale = {{searchResults.Stats.IsStale}}</li>
+                <li>Build = {{searchResults.BuildId}}</li>
+
             </ul>
             <h6>Facets</h6>
             <ul ng-repeat="facet in searchResults.FacetedResults" class="nav nav-list">

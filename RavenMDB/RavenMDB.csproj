@@ -447,13 +447,9 @@
     <Content Include="js\lib\jquery-1.9.1.min.js" />
     <Content Include="js\lib\ng-upload.js" />
     <Content Include="js\lib\ng-upload.min.js" />
-    <None Include="Scripts\jquery-2.0.0.intellisense.js" />
-    <Content Include="Scripts\jquery-2.0.0.js" />
-    <Content Include="Scripts\jquery-2.0.0.min.js" />
     <Content Include="Web.config" />
     <Content Include="js\lib\jquery-1.9.1.min.map" />
     <Content Include="movies1.json" />
-    <Content Include="Scripts\jquery-2.0.0.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

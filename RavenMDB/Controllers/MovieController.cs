@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web.Http;
 using Raven.Abstractions.Data;
@@ -63,7 +64,8 @@ namespace RavenMDB.Controllers
                            FacetedResults = facets.Results.Select(x=>new { Name=x.Key, Values = x.Value }),
                            FacetedFilterApplied = request.facets,
                            Suggestions = suggestionQuery.Suggestions,
-                           Stats = stats
+                           Stats = stats,
+                           BuildId = ConfigurationManager.AppSettings["appharbor.commit_id"]
                        };
 
         }    
@@ -100,6 +102,7 @@ namespace RavenMDB.Controllers
         public List<FacetedFilter> FacetedFilterApplied { get; set; }
         public IEnumerable<TitleFound> TitlesFound { get; set; }
         public string[] Suggestions { get; set; }
-        
+
+        public string BuildId { get; set; }
     }
 }
