@@ -16,7 +16,15 @@
                     <label class="tree-toggler nav-header">
                         {{facet.Name }}</label>
                     <ul ng-repeat="facetValue in facet.Values.Values | orderBy:'Hits':true | limitTo:5 " class="nav nav-list tree">
-                        <li><a href="#" ng-click="setFacet(facet,facetValue)" eat-click>{{facetValue.Range | humanize | titleize }} <span class="badge pull-right">{{facetValue.Hits}}</span></a> </li>
+                        <li>
+                                                            
+                            <a href="#" ng-click="setFacet(facet,facetValue)" eat-click>
+                                <i class="icon-li icon-chevron-sign-right" ng-show="facetIsSelected(facet)"></i>
+
+                                {{facetValue.Range | humanize | titleize }} 
+                                <span class="badge pull-right">{{facetValue.Hits}}</span>
+                            </a> 
+                        </li>
                     </ul>
                 </li>
             </ul>
@@ -24,11 +32,15 @@
         </div>
 
         <div class="span9">
-
+            
             <div class="input-append ">
                 <form ng-submit="submitRequest()">
+                    
                     <input class="span8" id="appendedInputButtons" type="text" ng-model="searchTerms" placeholder="Search...">
-                    <button class="btn" type="submit">Search</button>
+                    <button class="btn" type="submit">Search
+                        <i class="icon-spinner icon-spin icon-large" ng-show="showProcessingIcon"></i>
+                    </button>
+
                 </form>
             </div>
             <span ng-show="searchResults.Suggestions" class="help-block">Did you mean 
@@ -47,7 +59,7 @@
                     <a href="#/title/{{item.Id}}">{{item.Title}}</a>
                     <span class="label pull-right">{{item.Score }}</span>
                     <br />
-                    <i>{{item.PlotSimple}}</i>
+                    <em>{{ item.PlotSimple }}</em>
                     <br />
                     <div>
                         <blockquote ng-repeat="subItem in item.Highlights">

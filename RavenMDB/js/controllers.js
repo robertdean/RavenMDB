@@ -4,6 +4,7 @@
 
 angular.module('myApp.controllers', ['ngSanitize']).
   controller('MyCtrl1', ['$scope', '$http', '$routeParams', function ($scope, $http, $routeParams) {
+      $scope.showProcessingIcon = false;
       $scope.searchTerms = "";
       $scope.currentPage = 1;
       $scope.selectSuggestion = function (suggestion) {
@@ -24,6 +25,7 @@ angular.module('myApp.controllers', ['ngSanitize']).
       };
 
       $scope.submitRequest = function () {
+          $scope.showProcessingIcon = true;
           $http({
               url: "/api/movie/",
               method: "POST",
@@ -35,6 +37,7 @@ angular.module('myApp.controllers', ['ngSanitize']).
               headers: { 'Content-Type': 'application/json' }
           }).success(function (data) {
               $scope.searchResults = data;
+              $scope.showProcessingIcon = false;
           });
 
 
