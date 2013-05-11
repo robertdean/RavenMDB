@@ -29,14 +29,16 @@ namespace RavenMDB.Controllers
 
             var results = query.Search("Plot", request.q);
 
-            query = request
-                .facets
-                .Aggregate(query, 
-                    (current, item) => 
-                        current
-                            .AndAlso()
-                            .Where(string.Format("{0}:\"{1}\"", item.facet, item.selectedValue))
-                            );
+            foreach (var facet in request.facets)
+            {
+                
+                query = query
+                    .AndAlso()
+                    .Where(
+                        facet.selectedValue.Contains(" ") && !facet.selectedValue.StartsWith("[Dx") 
+                        ? string.Format("{0}:\"{1}\"", facet.facet, facet.selectedValue) 
+                        : string.Format("{0}:{1}", facet.facet, facet.selectedValue));
+            }
 
             var facets = query.ToFacets("facets/MovieFacets");
 
