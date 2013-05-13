@@ -3,7 +3,9 @@
 /* Controllers */
 
 angular.module('myApp.controllers', ['ngSanitize']).
-  controller('MyCtrl1', ['$scope', '$routeParams', 'MovieService', function ($scope, $routeParams, MovieService) {
+    controller('MyCtrl1', ['$scope', '$rootScope','$routeParams', 'MovieService', function ($scope, $rootScope, $routeParams, MovieService) {
+
+      $scope.searchResults = $rootScope.searchResults;
       $scope.showProcessingIcon = false;
       $scope.searchTerms = "";
       $scope.currentPage = 1;
@@ -31,6 +33,7 @@ angular.module('myApp.controllers', ['ngSanitize']).
               facets: $scope.selectedFacets,
               currentPage: $scope.currentPage
           }).success(function (data) {
+              $rootScope.searchResults = data;
               $scope.searchResults = data;
               $scope.showProcessingIcon = false;
           });
