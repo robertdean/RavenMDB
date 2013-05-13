@@ -52,7 +52,9 @@
             </span>
             <br />
             <span ng-repeat="facetFilter in searchResults.FacetedFilterApplied">
-                <span class="label label-info" ng-click="removeFacet(facetFilter)">{{facetFilter.facet}}: {{facetFilter.selectedValue | humanize | titleize }} &times</span>
+                <span class="label label-info" ng-click="removeFacet(facetFilter)">
+                    {{facetFilter.facet | humanize | titleize }}: 
+                    {{facetFilter.selectedValue | rangefacet | humanize | titleize }} &times</span>
             </span>
             <br />
             <ol>
