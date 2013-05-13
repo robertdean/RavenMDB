@@ -10,6 +10,7 @@
                 <li>Stale = {{searchResults.Stats.IsStale}}</li>
                 <li>Build = {{searchResults.BuildId | truncate:4}}</li>
             </ul>
+            
             <h6>Facets</h6>
             <ul ng-repeat="facet in searchResults.FacetedResults" class="nav nav-list">
                 <li>
