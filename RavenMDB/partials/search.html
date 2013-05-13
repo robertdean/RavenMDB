@@ -44,7 +44,7 @@
                 </form>
             </div>
             <span ng-show="searchResults.Suggestions" class="help-block">Did you mean 
-                <span ng-repeat="suggestion in searchResults.Suggestions">
+                <span ng-repeat="suggestion in searchResults.Suggestions | limitTo: 5">
                     <em><a href="#" ng-click="selectSuggestion(suggestion)" eat-click>{{suggestion}}</a></em>
                 </span>
                 ? 
