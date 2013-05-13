@@ -3,7 +3,7 @@
 /* Controllers */
 
 angular.module('myApp.controllers', ['ngSanitize']).
-  controller('MyCtrl1', ['$scope', '$http', '$routeParams', function ($scope, $http, $routeParams) {
+  controller('MyCtrl1', ['$scope', '$routeParams', 'MovieService', function ($scope, $routeParams, MovieService) {
       $scope.showProcessingIcon = false;
       $scope.searchTerms = "";
       $scope.currentPage = 1;
@@ -26,31 +26,21 @@ angular.module('myApp.controllers', ['ngSanitize']).
 
       $scope.submitRequest = function () {
           $scope.showProcessingIcon = true;
-          $http({
-              url: "/api/movie/",
-              method: "POST",
-              data: {
-                  q: $scope.searchTerms,
-                  facets: $scope.selectedFacets,
-                  currentPage: $scope.currentPage
-              },
-              headers: { 'Content-Type': 'application/json' }
+          MovieService.search({
+              q: $scope.searchTerms,
+              facets: $scope.selectedFacets,
+              currentPage: $scope.currentPage
           }).success(function (data) {
               $scope.searchResults = data;
               $scope.showProcessingIcon = false;
           });
-
-
       };
 
   } ])
-  .controller('MyCtrl2', ['$scope', '$http', '$routeParams', function ($scope, $http, $routeParams) {
-      $http({
-          url: "/api/movie/" + $routeParams.id,
-          method: "GET",
-          headers: { 'Content-Type': 'application/json' }
-      }).success(function (data) {
-          $scope.currentTitle = data;
-          console.log($scope.currentTitle);
-      });
+  .controller('MyCtrl2', ['$scope','$routeParams', 'MovieService', function ($scope,  $routeParams, MovieService) {
+      MovieService.fetchTitle($routeParams.id)
+          .success(function (data) {
+            $scope.currentTitle = data;
+            console.log($scope.currentTitle);
+        });
   } ]);
