@@ -22,7 +22,12 @@ angular.module('myApp.filters', []).
         return function (text,limit) {
             return _.str.truncate(text,limit);
         };
+    }])
+    .filter('rangefacet',[function(){
+        return function (text){
+            return text.replace(/Dx|\[|\]/g,"");
+        }
     }]);
-
+    
 
 

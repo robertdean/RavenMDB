@@ -12,6 +12,7 @@
             </ul>
             
             <h6>Facets</h6>
+            
             <ul ng-repeat="facet in searchResults.FacetedResults" class="nav nav-list">
                 <li>
                     <label class="tree-toggler nav-header">
@@ -21,8 +22,7 @@
                                                             
                             <a href="#" ng-click="setFacet(facet,facetValue)" eat-click>
                                 <i class="icon-li icon-chevron-sign-right" ng-show="facetIsSelected(facet)"></i>
-
-                                {{facetValue.Range | humanize | titleize }} 
+                                {{facetValue.Range | rangefacet | humanize | titleize }} 
                                 <span class="badge pull-right">{{facetValue.Hits}}</span>
                             </a> 
                         </li>
