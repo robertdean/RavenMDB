@@ -2,8 +2,8 @@
 
 /* Controllers */
 
-angular.module('myApp.controllers', ['ngSanitize']).
-    controller('MyCtrl1', ['$scope', '$rootScope','$routeParams', 'MovieService', function ($scope, $rootScope, $routeParams, MovieService) {
+angular.module('myApp.controllers', ['ngSanitize'])
+    .controller('SearchCtrl', ['$scope', '$rootScope','$routeParams', 'MovieService', function ($scope, $rootScope, $routeParams, MovieService) {
 
       $scope.searchResults = $rootScope.searchResults;
       $scope.showProcessingIcon = false;
@@ -40,10 +40,13 @@ angular.module('myApp.controllers', ['ngSanitize']).
       };
 
   } ])
-  .controller('MyCtrl2', ['$scope','$routeParams', 'MovieService', function ($scope,  $routeParams, MovieService) {
+    .controller('TitleCtrl', ['$scope','$routeParams', 'MovieService', function ($scope,  $routeParams, MovieService) {
       MovieService.fetchTitle($routeParams.id)
           .success(function (data) {
             $scope.currentTitle = data;
             console.log($scope.currentTitle);
         });
-  } ]);
+    }])
+    .controller('ErrorCtrl',['$scope','$routeParams', function($scope, $routeParams) {
+            
+    }]);

@@ -1,7 +1,6 @@
-<div ng-controller="MyCtrl1" class="container">
+<div class="container">
     <div class="row">
         <div class="span3">
-
             <ul class="nav nav-list">
                 <li><label class="nav-header">Query Stats</label></li>
                 <li>Total Results = {{searchResults.Stats.TotalResults}}</li>
@@ -10,16 +9,13 @@
                 <li>Stale = {{searchResults.Stats.IsStale}}</li>
                 <li>Build = {{searchResults.BuildId | truncate:4}}</li>
             </ul>
-            
             <h6>Facets</h6>
-            
             <ul ng-repeat="facet in searchResults.FacetedResults" class="nav nav-list">
                 <li>
                     <label class="tree-toggler nav-header">
                         {{facet.Name }}</label>
                     <ul ng-repeat="facetValue in facet.Values.Values | orderBy:'Hits':true | limitTo:5 " class="nav nav-list tree">
                         <li>
-                                                            
                             <a href="#" ng-click="setFacet(facet,facetValue)" eat-click>
                                 <i class="icon-li icon-chevron-sign-right" ng-show="facetIsSelected(facet)"></i>
                                 {{facetValue.Range | rangefacet | humanize | titleize }} 
@@ -52,9 +48,11 @@
             </span>
             <br />
             <span ng-repeat="facetFilter in searchResults.FacetedFilterApplied">
-                <span class="label label-info" ng-click="removeFacet(facetFilter)">
+                <span class="btn btn-mini" ng-click="removeFacet(facetFilter)">
                     {{facetFilter.facet | humanize | titleize }}: 
-                    {{facetFilter.selectedValue | rangefacet | humanize | titleize }} &times</span>
+                    {{facetFilter.selectedValue | rangefacet | humanize | titleize }} 
+                    &emsp;
+                    <i class="icon-remove"></i></span>
             </span>
             <br />
             <ol>

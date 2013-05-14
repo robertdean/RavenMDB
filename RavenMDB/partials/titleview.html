@@ -1,7 +1,6 @@
 <div class="container-fluid">
     <div class="row-fluid">
         <div class="span2">
-
         </div>
         <div class="span10">
             <h4>{{currentTitle.Title}}</h4>               
@@ -10,12 +9,10 @@
                 <div class="span12"><span ng-repeat="genre in currentTitle.Genres">{{genre}}</span></div>
                 <div class="span1">
                     <h1>{{currentTitle.Rated}}</h1>        
-                    
                 </div>
                 <div class="span11">
-            <blockquote ng-show="currentTitle.also_known_as" > Also known as <i> {{currentTitle.also_known_as[0]}}</i></blockquote>
-            <blockquote >{{currentTitle.plot_simple}}</blockquote>
-                    
+                <blockquote ng-show="currentTitle.also_known_as" > Also known as <i> {{currentTitle.also_known_as[0]}}</i></blockquote>
+                <blockquote >{{currentTitle.plot_simple}}</blockquote>
                 </div>
             </div>
             
@@ -23,7 +20,7 @@
                 <div class="span2">
                     <ul  class="nav nav-list">
                         <li><label class="nav-header">Actors</label></li>
-                        <li ng-repeat="actor in currentTitle.Actors | limitTo:5">{{actor}}</li>
+                        <li ng-repeat="actor in currentTitle.Actors ">{{actor}}</li>
                     </ul>
                 </div>
                 <div class="span2">
@@ -35,8 +32,6 @@
                         <li><label class="nav-header">Writers</label></li>
                         <li ng-repeat="writer in currentTitle.Writers">{{writer}}</li>
                     </ul>
-
-
                 </div>
                 <div class="span6">
                     {{currentTitle.Plot}}
@@ -46,4 +41,3 @@
         
     </div>
 </div>
-

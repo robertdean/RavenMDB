@@ -1,8 +1,6 @@
 'use strict';
 
 /* Directives */
-
-
 angular.module('myApp.directives', []).
   directive('appVersion', ['version', function(version) {
     return function(scope, elm, attrs) {
@@ -19,7 +17,7 @@ angular.module('myApp.directives', []).
       };
   });
 
-  angular.module('myApp.directives', [])
+angular.module('myApp.directives', [])
       .directive('eatClick', function () {
           return function(scope, element, attrs) {
               $(element).click(function(event) {
