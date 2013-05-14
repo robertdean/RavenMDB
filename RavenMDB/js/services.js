@@ -20,12 +20,19 @@ angular.module('myApp.services', []).
                   });
               },
               fetchTitle: function (id) {
-                  console.log(id)
                   return $http({
                       url: "/api/movie/" + id,
                       method: "GET",
                       headers: { 'Content-Type': 'application/json' }
                   });
-              }
+              },
+              saveChanges: function (title) {
+                  console.log(title);
+                  return $http({
+                      url: "/api/movie/" + title.id,
+                      method: "GET",
+                      headers: { 'Content-Type': 'application/json' }
+                  });
+              },
           };
       }]);
