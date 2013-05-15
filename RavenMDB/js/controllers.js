@@ -10,7 +10,8 @@ angular.module('myApp.controllers', ['ngSanitize'])
       $scope.showProcessingIcon = false;
       $scope.searchTerms = "";
       $scope.currentPage = 1;
-      
+        $scope.errorMessage = null;
+        
       $scope.init = function(){
           if($scope.showProcessingIcon && !$scope.searchResults){
               $scope.submitRequest();
@@ -45,7 +46,7 @@ angular.module('myApp.controllers', ['ngSanitize'])
           $scope.selectedFacets.splice(facetToRemove,1);
           $scope.submitRequest();
       };
-
+     
       $scope.submitRequest = function () {
           $scope.showProcessingIcon = true;
           MovieService.search({
@@ -58,7 +59,7 @@ angular.module('myApp.controllers', ['ngSanitize'])
               $scope.searchResults = data;
               $scope.showProcessingIcon = false;
           }).error(function(error){
-              console.log(error);
+              $scope.errorMessage = error.Message;              
           });
       };
 
