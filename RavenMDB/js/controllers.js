@@ -11,6 +11,12 @@ angular.module('myApp.controllers', ['ngSanitize'])
       $scope.searchTerms = "";
       $scope.currentPage = 1;
       
+      $scope.init = function(){
+          if($scope.showProcessingIcon && !$scope.searchResults){
+              $scope.submitRequest();
+          }
+      }
+      
       $scope.setPage = function(newPageNumber){
           $scope.currentPage = newPageNumber;
           $scope.submitRequest();
@@ -51,6 +57,8 @@ angular.module('myApp.controllers', ['ngSanitize'])
               $rootScope.searchResults = data;
               $scope.searchResults = data;
               $scope.showProcessingIcon = false;
+          }).error(function(error){
+              console.log(error);
           });
       };
 
