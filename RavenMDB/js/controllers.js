@@ -5,28 +5,29 @@
 angular.module('myApp.controllers', ['ngSanitize'])
     .controller('SearchCtrl', ['$scope', '$rootScope','$routeParams', 'MovieService', function ($scope, $rootScope, $routeParams, MovieService) {
 
-      $scope.searchResults = $rootScope.searchResults;            
-      $scope.pageSize = 10;
-      $scope.showProcessingIcon = false;
-      $scope.searchTerms = "";
-      $scope.currentPage = 1;
+        $scope.searchResults = $rootScope.searchResults;            
+        $scope.pageSize = 10;
+        $scope.showProcessingIcon = false;
+        $scope.searchTerms = "";
+        $scope.currentPage = 1;
         $scope.errorMessage = null;
         
-      $scope.init = function(){
+        $scope.init = function(){
           if($scope.showProcessingIcon && !$scope.searchResults){
               $scope.submitRequest();
           }
       }
       
-      $scope.setPage = function(newPageNumber){
+        $scope.setPage = function(newPageNumber){
           $scope.currentPage = newPageNumber;
           $scope.submitRequest();
       }
       
       $scope.totalPages = function(){
+          
         if(!$scope.searchResults) return 1;
                 
-        return $rootScope.searchResults.Stats.TotalResults;
+        return $rootScope.searchResults.Stats.TotalResults  ;
       }
       
       $scope.selectSuggestion = function (suggestion) {
@@ -49,19 +50,28 @@ angular.module('myApp.controllers', ['ngSanitize'])
      
       $scope.submitRequest = function () {
           $scope.showProcessingIcon = true;
-          MovieService.search({
+          MovieService
+            .search({
+              
               q: $scope.searchTerms,
               facets: $scope.selectedFacets,
               currentPage: $scope.currentPage,
-              pageSize: $scope.pageSize
-          }).success(function (data) {
-              $rootScope.searchResults = data;
-              $scope.searchResults = data;              
-               $scope.showProcessingIcon = false;
-          }).error(function(error){
-              $scope.errorMessage = error.Message;                            
-               $scope.showProcessingIcon = false;
-          });
+              pageSize: $scope.pageSize 
+              
+              })
+            .success(function (data, status, headers, config) {            
+              
+                $rootScope.searchResults = data;
+                $scope.searchResults = data;              
+                $scope.showProcessingIcon = false;                                 
+                return data;
+                
+               })
+            .error(function(data, status, headers, config){
+                $scope.errorMessage = data.Message;                            
+                $scope.showProcessingIcon = false; 
+                return status;
+               });
       };
 
   } ])
