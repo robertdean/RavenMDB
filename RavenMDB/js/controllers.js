@@ -57,10 +57,10 @@ angular.module('myApp.controllers', ['ngSanitize'])
           }).success(function (data) {
               $rootScope.searchResults = data;
               $scope.searchResults = data;              
+               $scope.showProcessingIcon = false;
           }).error(function(error){
               $scope.errorMessage = error.Message;                            
-          }).done(function(){
-              $scope.showProcessingIcon = false;
+               $scope.showProcessingIcon = false;
           });
       };
 
