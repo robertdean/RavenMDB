@@ -6,6 +6,9 @@ angular.module('myApp.controllers', ['ngSanitize'])
     .controller('SearchCtrl', ['$scope', '$rootScope','$routeParams', 'MovieService', function ($scope, $rootScope, $routeParams, MovieService) {
 
       $scope.searchResults = $rootScope.searchResults;
+      
+      if(!$scope.searchResults) $scope.submitRequest();
+      
       $scope.showProcessingIcon = false;
       $scope.searchTerms = "";
       $scope.currentPage = 1;
