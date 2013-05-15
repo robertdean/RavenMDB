@@ -56,10 +56,11 @@ angular.module('myApp.controllers', ['ngSanitize'])
               pageSize: $scope.pageSize
           }).success(function (data) {
               $rootScope.searchResults = data;
-              $scope.searchResults = data;
-              $scope.showProcessingIcon = false;
+              $scope.searchResults = data;              
           }).error(function(error){
-              $scope.errorMessage = error.Message;              
+              $scope.errorMessage = error.Message;                            
+          }).done(function(){
+              $scope.showProcessingIcon = false;
           });
       };
 
