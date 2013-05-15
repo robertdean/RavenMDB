@@ -45,7 +45,8 @@ angular.module('myApp.controllers', ['ngSanitize'])
           MovieService.search({
               q: $scope.searchTerms,
               facets: $scope.selectedFacets,
-              currentPage: $scope.currentPage
+              currentPage: $scope.currentPage,
+              pageSize: $scope.pageSize
           }).success(function (data) {
               $rootScope.searchResults = data;
               $scope.searchResults = data;
