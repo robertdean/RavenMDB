@@ -71,15 +71,14 @@ angular.module('myApp.controllers', ['ngSanitize'])
                 $scope.errorMessage = data.Message;                            
                 $scope.showProcessingIcon = false; 
                 return status;
-               });
+                });
       };
 
   } ])
     .controller('TitleCtrl', ['$scope','$routeParams', 'MovieService', function ($scope,  $routeParams, MovieService) {
       MovieService.fetchTitle($routeParams.id)
           .success(function (data) {
-            $scope.currentTitle = data;
-            console.log($scope.currentTitle);
+            $scope.currentTitle = data;            
         });
     }])
     .controller('EditTitleCtrl',['$scope','$routeParams','MovieService', function($scope, $routeParams, MovieService) {

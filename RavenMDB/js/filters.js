@@ -13,6 +13,11 @@ angular.module('myApp.filters', []).
             return _.str.titleize(text);
         };
     }])
+    .filter('toSentenceSerial',[function(){
+        return function(textArray){
+            return _.toSentenceSerial(textArray);
+        };
+    }])
     .filter('humanize', [function () {
         return function (text) {
             return _.str.humanize(text);
@@ -28,6 +33,3 @@ angular.module('myApp.filters', []).
             return text.replace(/Dx|\[|\]/g,"");
         }
     }]);
-    
-
-

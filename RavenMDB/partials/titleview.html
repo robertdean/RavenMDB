@@ -6,13 +6,13 @@
             <h4>{{currentTitle.Title}}</h4>               
             
             <div class="row-fluid">
-                <div class="span12"><span ng-repeat="genre in currentTitle.Genres">{{genre}}</span></div>
+                <div class="span12"><span ng-repeat="genre in currentTitle.Genres | toSentenceSerial ">{{genre}}</span></div>
                 <div class="span1">
                     <h1>{{currentTitle.Rated}}</h1>        
                 </div>
                 <div class="span11">
                 <blockquote ng-show="currentTitle.also_known_as" > Also known as <i> {{currentTitle.also_known_as[0]}}</i></blockquote>
-                <blockquote >{{currentTitle.plot_simple}}</blockquote>
+                <blockquote >{{currentTitle.plot_simple }}</blockquote>
                 </div>
             </div>
             
