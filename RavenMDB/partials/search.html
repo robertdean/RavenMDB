@@ -40,7 +40,7 @@
 
                 </form>
             </div>
-            <span ng-model="errorMessage" class="alert alert-error" ></span>
+            <span ng-show="errorMessage" class="alert alert-error" >{{ errorMessage }} </span>
             <span ng-show="searchResults.Suggestions" class="help-block">Did you mean 
                 <span ng-repeat="suggestion in searchResults.Suggestions | limitTo: 5">
                     <em><a href="#" ng-click="selectSuggestion(suggestion)" eat-click>{{suggestion}}</a></em>
