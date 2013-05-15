@@ -5,19 +5,30 @@
 angular.module('myApp.controllers', ['ngSanitize'])
     .controller('SearchCtrl', ['$scope', '$rootScope','$routeParams', 'MovieService', function ($scope, $rootScope, $routeParams, MovieService) {
 
-      $scope.searchResults = $rootScope.searchResults;
-      
-      if(!$scope.searchResults) submitRequest();
-      
+      $scope.searchResults = $rootScope.searchResults;            
+      $scope.pageSize = 10;
       $scope.showProcessingIcon = false;
       $scope.searchTerms = "";
       $scope.currentPage = 1;
+      
+      $scope.setPage = function(newPageNumber){
+          $scope.currentPage = newPageNumber;
+          $scope.submitRequest();
+      }
+      
+      $scope.totalPages = function(){
+        if(!$scope.searchResults) return 1;
+                
+        return $rootScope.searchResults.Stats.TotalResults;
+      }
+      
       $scope.selectSuggestion = function (suggestion) {
           $scope.searchTerms = suggestion;
           $scope.submitRequest();
       };
 
       $scope.selectedFacets = [];
+      
       $scope.setFacet = function (parent, selectedValue) {
           $scope.selectedFacets.push({ facet: parent.Name, selectedValue: selectedValue.Range });
           $scope.submitRequest();
