@@ -7,7 +7,7 @@ angular.module('myApp.controllers', ['ngSanitize'])
 
       $scope.searchResults = $rootScope.searchResults;
       
-      if(!$scope.searchResults) $scope.submitRequest();
+      if(!$scope.searchResults) submitRequest();
       
       $scope.showProcessingIcon = false;
       $scope.searchTerms = "";
