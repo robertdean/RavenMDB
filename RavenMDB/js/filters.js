@@ -15,7 +15,7 @@ angular.module('myApp.filters', []).
     }])
     .filter('toSentenceSerial',[function(){
         return function(textArray){
-            return _.toSentenceSerial(textArray);
+            return _.str.toSentenceSerial(textArray);
         };
     }])
     .filter('humanize', [function () {
