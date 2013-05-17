@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -127,10 +127,12 @@
     <Content Include="js\filters.js" />
     <Content Include="js\lib\underscore.string.js" />
     <Content Include="js\services.js" />
+    <Content Include="js\searchCtrl.js" />
     <Content Include="ng-upload-sample.html" />
     <Content Include="partials\404.html" />
     <Content Include="partials\editTitle.html" />
     <Content Include="partials\search.html" />
+    <Content Include="partials\searchBox.html" />
     <Content Include="partials\titleview.html" />
   </ItemGroup>
   <ItemGroup>
