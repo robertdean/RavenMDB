@@ -9,9 +9,10 @@ angular.module('myApp.services', []).
 
 angular.module('myApp.services', []).
   factory('MovieService',
-      ['$http', function ($http) {
+      ['$http', function ($http) {          
           return {
               search: function(query) {
+                  console.log('Test');
                   return $http({
                       url: "/api/movie/",
                       method: "POST",

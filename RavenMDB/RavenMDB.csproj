@@ -131,6 +131,7 @@
     <Content Include="partials\404.html" />
     <Content Include="partials\editTitle.html" />
     <Content Include="partials\search.html" />
+    <Content Include="partials\searchBox.html" />
     <Content Include="partials\titleview.html" />
   </ItemGroup>
   <ItemGroup>

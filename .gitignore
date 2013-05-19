@@ -64,4 +64,4 @@ packages/
 #Test files
 *.testsettings
 
-.c9revisions/
+.c9revisions*/
