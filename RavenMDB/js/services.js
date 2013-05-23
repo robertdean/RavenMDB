@@ -5,6 +5,8 @@ angular.module('myApp.services', [])
     .service('SearchService', ['$http', function ($http) {
         var results;
         var currentTitle;
+        var currentPage;
+        var searchTerms;
         
         var searchService = {
             setResults: function (data) {
