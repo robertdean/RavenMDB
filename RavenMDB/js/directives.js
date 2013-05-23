@@ -16,12 +16,12 @@ angular.module('myApp.directives', [])
             templateUrl: 'partials/directives/navBar.html'
         };
     }])
-    .directive('facet',['SearchService',function(SearchService){
+    .directive('facetControl',['SearchService',function(SearchService){
         return {
             scope:{
-                facetModel:"=",
-                setFacet:function(arg1,arg2){
-                    console.log(facetToSet);
+                facet: "=",
+                setFacet: function(arg1,arg2){
+                    console.log(arg1);
                 }
             },
             restrict: "E",
