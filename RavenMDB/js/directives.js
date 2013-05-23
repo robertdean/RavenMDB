@@ -22,7 +22,12 @@ angular.module('myApp.directives', [])
                 facet: "="                
             },
             restrict: "E",
-            templateUrl:"partials/directives/facet.html"
+            templateUrl:"partials/directives/facet.html",
+            link: function(scope,element, attributes){
+                scope.setFacet = function(arg1,arg2){
+                    console.log(arg1);
+                };                
+            }
         }
     }])
     .directive('searchBox', ['SearchService', function (SearchService) {        

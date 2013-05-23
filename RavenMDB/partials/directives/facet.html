@@ -1,7 +1,7 @@
 <label class="tree-toggler nav-header">{{facet.Name }}</label>
 <ul ng-repeat="facetValue in facet.Values.Values | orderBy:'Hits':true | limitTo:5 " class="nav nav-list tree">
     <li>
-        <a href="#" >
+        <a href="#" ng-click="setFacet(facet,facetValue)">
             <i class="icon-li icon-chevron-sign-right" ></i>
             {{facetValue.Range }} 
             <span class="badge pull-right">{{facetValue.Hits}}</span>
