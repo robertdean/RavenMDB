@@ -21,7 +21,7 @@ angular.module('myApp.directives', [])
             restrict: "E",
             link: function (scope, element, attributes) {
                 scope.processing  = function(){
-                      SearchService.processing();
+                      return SearchService.processing();
                 };
                 scope.submit = function () {
                     SearchService.search(scope.searchTerms);
