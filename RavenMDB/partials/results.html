@@ -1,0 +1,11 @@
+﻿<div ng-controller="ResultsCtrl" class="container" >
+    <div class="row">
+        <h1>{{name}}</h1>
+        <ul>
+            <li  ng-repeat="item in results()" 
+                  ng-animage="{ 'animate' }">
+                {{$index+1}}. {{item.Title}}
+            </li>
+        </ul>
+    </div>
+</div> 
