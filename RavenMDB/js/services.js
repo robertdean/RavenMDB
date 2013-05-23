@@ -29,7 +29,7 @@ angular.module('myApp.services', [])
             },
             setFacet: function(facet,facetValue){
                 selectedFacets.push({ facet: facet.Name, selectedValue: facetValue.Range });
-                
+                fetchData();
             },
             removeFacet: function(facet,facetValue){
                 
