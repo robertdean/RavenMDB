@@ -1,7 +1,7 @@
 <form class="form-search" style="margin: 0px; padding-top: 5px;" ng-submit="submit()">
     <div class="input-append">
         <input ng-model="searchTerms" type="text" class="span3 search-query" placeholder="Search..." >
-        <button type="submit" class="btn">Search</button>
-        <span>{{ processing() }}</span>
+        <button type="submit" class="btn">Search <span ng-show="processing()">x</span></button>
+        
     </div>
 </form>
