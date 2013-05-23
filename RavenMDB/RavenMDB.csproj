@@ -104,68 +104,37 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RavenSetup.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="css\lib\font-awesome-ie7.min.css" />
-    <Content Include="css\lib\font-awesome.css" />
-    <Content Include="css\lib\font-awesome.min.css" />
-    <Content Include="css\lib\font\fontawesome-webfont.svg" />
-    <Content Include="css\lib\bootstrap-responsive.css" />
-    <Content Include="css\lib\bootstrap-responsive.min.css" />
-    <Content Include="css\lib\bootstrap.css" />
-    <Content Include="css\lib\bootstrap.min.css" />
-    <Content Include="css\lib\images\glyphicons-halflings-white.png" />
-    <Content Include="css\lib\images\glyphicons-halflings.png" />
+    <Content Include="css\app.css" />
     <Content Include="default.htm" />
+    <Content Include="default.old.htm" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="js\app.2.js" />
     <Content Include="js\app.js" />
     <Content Include="js\controllers.js" />
     <Content Include="js\directives.js" />
     <Content Include="js\filters.js" />
-    <Content Include="js\lib\underscore.string.js" />
+    <Content Include="js\lib\undescore.string.js" />
     <Content Include="js\services.js" />
     <Content Include="js\searchCtrl.js" />
     <Content Include="ng-upload-sample.html" />
     <Content Include="partials\404.html" />
+    <Content Include="partials\details.html" />
+    <Content Include="partials\directives\facet.html" />
+    <Content Include="partials\directives\navBar.html" />
+    <Content Include="partials\directives\searchBox.html" />
     <Content Include="partials\editTitle.html" />
+    <Content Include="partials\results.html" />
     <Content Include="partials\search.html" />
     <Content Include="partials\searchBox.html" />
+    <Content Include="partials\test.html" />
     <Content Include="partials\titleview.html" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-    <Content Include="css\lib\font\fontawesome-webfont.woff" />
-    <Content Include="css\lib\font\fontawesome-webfont.ttf" />
-    <Content Include="css\lib\font\fontawesome-webfont.eot" />
-    <Content Include="css\lib\font\FontAwesome.otf" />
-    <None Include="js\lib\jquery-1.9.1.intellisense.js" />
-    <Content Include="js\lib\angular-bootstrap-prettify.js" />
-    <Content Include="js\lib\angular-bootstrap-prettify.min.js" />
-    <Content Include="js\lib\angular-bootstrap.js" />
-    <Content Include="js\lib\angular-bootstrap.min.js" />
-    <Content Include="js\lib\angular-cookies.js" />
-    <Content Include="js\lib\angular-cookies.min.js" />
-    <Content Include="js\lib\angular-loader.js" />
-    <Content Include="js\lib\angular-loader.min.js" />
-    <Content Include="js\lib\angular-mocks.js" />
-    <Content Include="js\lib\angular-resource.js" />
-    <Content Include="js\lib\angular-resource.min.js" />
-    <Content Include="js\lib\angular-sanitize.js" />
-    <Content Include="js\lib\angular-sanitize.min.js" />
-    <Content Include="js\lib\angular-scenario.js" />
-    <Content Include="js\lib\angular.js" />
-    <Content Include="js\lib\angular.min.js" />
-    <Content Include="js\lib\bootstrap.js" />
-    <Content Include="js\lib\bootstrap.min.js" />
-    <Content Include="js\lib\jquery-1.9.1.js" />
-    <Content Include="js\lib\jquery-1.9.1.min.js" />
-    <Content Include="js\lib\ng-upload.js" />
-    <Content Include="js\lib\ng-upload.min.js" />
     <Content Include="Web.config" />
-    <Content Include="js\lib\jquery-1.9.1.min.map" />
     <Content Include="movies1.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

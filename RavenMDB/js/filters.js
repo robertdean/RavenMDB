@@ -1,20 +1,14 @@
 'use strict';
 
 /* Filters */
-
-angular.module('myApp.filters', []).
-  filter('interpolate', ['version', function(version) {
-      return function(text) {
-          return String(text).replace(/\%VERSION\%/mg, version);
-      };
-  }])
+angular.module('myApp.filters', [])
     .filter('titleize', [function () {
-        return function(text) {
+        return function (text) {
             return _.str.titleize(text);
         };
     }])
-    .filter('toSentenceSerial',[function(){
-        return function(textArray){
+    .filter('toSentenceSerial', [function () {
+        return function (textArray) {
             return _.str.toSentenceSerial(textArray);
         };
     }])
@@ -24,12 +18,13 @@ angular.module('myApp.filters', []).
         };
     }])
     .filter('truncate', [function () {
-        return function (text,limit) {
-            return _.str.truncate(text,limit);
+        return function (text, limit) {
+            return _.str.truncate(text, limit);
         };
     }])
-    .filter('rangefacet',[function(){
-        return function (text){
-            return text.replace(/Dx|\[|\]/g,"");
-        }
+    .filter('rangefacet', [function () {
+        return function(text) {
+            return text.replace(/Dx|\[|\]/g, "");
+        };
     }]);
+
