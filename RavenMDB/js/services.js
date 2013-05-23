@@ -10,14 +10,26 @@ angular.module('myApp.services', [])
         var searchTerms;
         var processing=false;
         
+        var fetchData = function(){
+           var req = $http.post("api/movie", {
+                    q: searchTerms,
+                    facets: selectedFacets,
+                    currentPage: 1,
+                    pageSize: 10
+                });
+                req.success(function (data) {
+                    processing=false;
+                    results = data;
+                });  
+        };
+        
         var searchService = {
             processing: function(){
                 return processing;
             },
             setFacet: function(facet,facetValue){
-                console.log(facet);
-                console.log(facetValue);
                 selectedFacets.push({ facet: facet.Name, selectedValue: facetValue.Range });
+                
             },
             removeFacet: function(facet,facetValue){
                 
@@ -41,16 +53,8 @@ angular.module('myApp.services', [])
             },
             search: function (terms) {
                 processing=true;
-                var req = $http.post("api/movie", {
-                    q: terms,
-                    facets: selectedFacets,
-                    currentPage: 1,
-                    pageSize: 10
-                });
-                req.success(function (data) {
-                    processing=false;
-                    results = data;
-                });
+                searchTerms =terms;
+                fetchData();
             }
         };
 
