@@ -24,7 +24,7 @@ angular.module('myApp.directives', [])
                 }
             },
             restrict: "E",
-            template:"partials/directives/facet.html"
+            templateUrl:"partials/directives/facet.html"
         }
     }])
     .directive('searchBox', ['SearchService', function (SearchService) {        
