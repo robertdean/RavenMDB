@@ -24,8 +24,8 @@ angular.module('myApp.directives', [])
             restrict: "E",
             templateUrl:"partials/directives/facet.html",
             link: function(scope,element, attributes){
-                scope.setFacet = function(arg1,arg2){
-                    console.log(arg1);
+                scope.setFacet = function(facet,facetValue){
+                    SearchService.setFacet(facet,facetValue);
                 };                
             }
         }
