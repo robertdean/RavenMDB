@@ -7,8 +7,12 @@ angular.module('myApp.services', [])
         var currentTitle;
         var currentPage;
         var searchTerms;
+        var processing=false;
         
         var searchService = {
+            processing: function(){
+                return processing;
+            },
             setResults: function (data) {
                 results = data;
             },
@@ -16,15 +20,18 @@ angular.module('myApp.services', [])
                 return results;
             },
             find:function(id) {
+                processing=true;
                 var req = $http.get("api/movie/"+id);
                 req.success(function (data) {
                     currentTitle = data;
+                    processing = false;
                 });
             },
             currentTile: function() {
                 return currentTitle;
             },
             search: function (terms) {
+                processing=true;
                 var req = $http.post("api/movie", {
                     q: terms,
                     facets: [],
@@ -32,6 +39,7 @@ angular.module('myApp.services', [])
                     pageSize: 10
                 });
                 req.success(function (data) {
+                    processing=false;
                     results = data;
                 });
             }

@@ -17,12 +17,13 @@ angular.module('myApp.directives', [])
         };
     }])
     .directive('searchBox', ['SearchService', function (SearchService) {
-
+        scope.processing = SearchService.processing();
         return {
             restrict: "E",
             link: function (scope, element, attributes) {
                 scope.submit = function () {
                     SearchService.search(scope.searchTerms);
+                    
                 };
             },
             templateUrl: 'partials/directives/searchBox.html'
