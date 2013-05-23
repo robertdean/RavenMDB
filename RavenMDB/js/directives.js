@@ -8,13 +8,24 @@ angular.module('myApp.directives', [])
                 event.preventDefault();
             });
         };
-    })
+    })    
     .directive('navBar', [function () {
         return {
             restrict: "E",
             transclude: true,
             templateUrl: 'partials/directives/navBar.html'
         };
+    }])
+    .directive('facet',['SearchService',function(SearchService){
+        return {
+            scope:{
+                setFacet:function(facetToSet){
+                    console.log(facetToSet);
+                }
+            },
+            restrict: "E",
+            template:"partials/directives/facet.html"
+        }
     }])
     .directive('searchBox', ['SearchService', function (SearchService) {        
         return {
