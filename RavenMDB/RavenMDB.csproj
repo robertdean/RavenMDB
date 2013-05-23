@@ -116,7 +116,7 @@
     <Content Include="js\controllers.js" />
     <Content Include="js\directives.js" />
     <Content Include="js\filters.js" />
-    <Content Include="js\lib\undescore.string.js" />
+    <Content Include="js\lib\underscore.string.js" />
     <Content Include="js\services.js" />    
     <Content Include="ng-upload-sample.html" />
     <Content Include="partials\404.html" />
