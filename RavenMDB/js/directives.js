@@ -19,10 +19,7 @@ angular.module('myApp.directives', [])
     .directive('facetControl',['SearchService',function(SearchService){
         return {
             scope:{
-                facet: "=",
-                setFacet: function(arg1,arg2){
-                    console.log(arg1);
-                }
+                facet: "="                
             },
             restrict: "E",
             templateUrl:"partials/directives/facet.html"
