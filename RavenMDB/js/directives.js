@@ -19,7 +19,8 @@ angular.module('myApp.directives', [])
     .directive('facet',['SearchService',function(SearchService){
         return {
             scope:{
-                setFacet:function(facetToSet){
+                facetModel:"=",
+                setFacet:function(arg1,arg2){
                     console.log(facetToSet);
                 }
             },
