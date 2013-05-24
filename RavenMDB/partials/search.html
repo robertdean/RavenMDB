@@ -1,31 +1,20 @@
 <div class="container">
     <div class="row">
         <div class="span3">
-            <h6>Facets</h6>
+            <pagination></pagination>
             <ul ng-repeat="facet in results().FacetedResults" class="nav nav-list">
                 <li>
                     <facet-control facet="facet"></facet>
-                    <!---
-                    <label class="tree-toggler nav-header">
-                        {{facet.Name }}</label>
-                    <ul ng-repeat="facetValue in facet.Values.Values | orderBy:'Hits':true | limitTo:5 " class="nav nav-list tree">
-                        <li>
-                            <a href="#" ng-click="setFacet(facet,facetValue)" >
-                                <i class="icon-li icon-chevron-sign-right" ng-show="facetIsSelected(facet)"></i>
-                                {{facetValue.Range | rangefacet | humanize | titleize }} 
-                                <span class="badge pull-right">{{facetValue.Hits}}</span>
-                            </a> 
-                        </li>
-                    </ul>--->
                 </li>
             </ul>
 
         </div>
 
         <div class="span9">
-            <span ng-show="results().Suggestions" class="help-block">Did you mean 
+            <span ng-show="results().Suggestions" class="help-block">
+                Did you mean 
                 <span ng-repeat="suggestion in results().Suggestions | limitTo: 5">
-                    <em><a href="#">{{ suggestion }}</a></em>
+                    <suggestion-control suggestion="suggestion"></suggestion-control>                    
                 </span>
                 ? 
             </span>
