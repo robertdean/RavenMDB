@@ -39,44 +39,27 @@ angular.module('myApp.directives', [])
             restrict: "E",
             templateUrl: "partials/directives/facet.html",
             link: function(scope, element, attributes) {
-                scope.setFacet = function(facet, facetValue) {
+                scope.setFacet = function (facet, facetValue) {
+                    facet.isActive = true;
                     SearchService.setFacet(facet, facetValue);
                 };
+                scope.removeFacet = function(element) {
+                    console.log(element);
+                };
             }
-        };
-    }])
-    .directive('pagination', ['SearchService', function (SearchService) {
-        return {
-            scope: {
-                totalPages: "=",
-                currentPage: "="
-            },
-            restrict: "E",
-            link: function (scope, element, attributes) {
-                scope.pages = function () {                    
-                    return SearchService.getPages();
-                };
-                scope.currentPage = function() {
-                    return SearchService.getCurrenPage();
-                };
-                
-                scope.totalRecords = function () {
-                    return SearchService.totalRecords();
-                };
-                
-                
-            },
-            templateUrl: 'partials/directives/pagination.html'
         };
     }])
     .directive('searchBox', ['SearchService', function (SearchService) {        
         return {
             restrict: "E",
             link: function (scope, element, attributes) {
+
                 scope.searchTerms = SearchService.searchTerms;
+
                 scope.processing = function () {
                       return SearchService.processing();
                 };
+
                 scope.submit = function () {
                     SearchService.search(scope.searchTerms);
                 };

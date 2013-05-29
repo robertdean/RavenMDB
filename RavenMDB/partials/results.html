@@ -2,8 +2,7 @@
     <div class="row">
         <h1>{{name}}</h1>
         <ul>
-            <li  ng-repeat="item in results()" 
-                  ng-animage="{ 'animate' }">
+            <li  ng-repeat="item in results()" >
                 {{$index+1}}. {{item.Title}}
             </li>
         </ul>

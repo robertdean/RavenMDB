@@ -121,7 +121,6 @@
     <Content Include="ng-upload-sample.html" />
     <Content Include="partials\404.html" />
     <Content Include="partials\details.html" />
-    <Content Include="partials\directives\pagination.html" />
     <Content Include="partials\directives\facet.html" />
     <Content Include="partials\directives\navBar.html" />
     <Content Include="partials\directives\searchBox.html" />

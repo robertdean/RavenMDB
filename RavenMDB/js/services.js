@@ -38,7 +38,8 @@ angular.module('myApp.services', [])
         };
         
         var searchService = {
-
+            
+            
             processing: function () {
                 return processing;
             },
