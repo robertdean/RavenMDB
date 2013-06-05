@@ -107,24 +107,32 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include="css\app.css" />
-    <Content Include="default.htm" />
-    <Content Include="default.old.htm" />
+    <Content Include="default2.htm" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="js\app.2.js" />
+    <Content Include="default.htm" />
+    <Content Include="js\lib\angular-ui.js" />
     <Content Include="js\app.js" />
-    <Content Include="js\controllers.js" />
     <Content Include="js\directives.js" />
+    <Content Include="js\old\app.2.js" />
+    <Content Include="js\old\app.js" />
+    <Content Include="js\old\controllers.js" />
+    <Content Include="js\old\directives.js" />
     <Content Include="js\filters.js" />
     <Content Include="js\lib\underscore.string.js" />
+    <Content Include="js\old\services.js" />
     <Content Include="js\services.js" />
-    <Content Include="ng-upload-sample.html" />
     <Content Include="partials\404.html" />
     <Content Include="partials\details.html" />
-    <Content Include="partials\directives\facet.html" />
-    <Content Include="partials\directives\navBar.html" />
-    <Content Include="partials\directives\searchBox.html" />
-    <Content Include="partials\directives\suggestion.html" />
+    <Content Include="partials\directives\facets.html" />
+    <Content Include="partials\directives\navbar.html" />
+    <Content Include="partials\directives\old\facet.html" />
+    <Content Include="partials\directives\old\navBar.html" />
+    <Content Include="partials\directives\old\searchBox.html" />
+    <Content Include="partials\directives\old\suggestion.html" />
+    <Content Include="partials\directives\pagination.html" />
+    <Content Include="partials\directives\searchbox.html" />
+    <Content Include="partials\directives\suggestions.html" />
     <Content Include="partials\editTitle.html" />
     <Content Include="partials\results.html" />
     <Content Include="partials\search.html" />
@@ -135,6 +143,7 @@
     <Content Include="packages.config" />
     <Content Include="Web.config" />
     <Content Include="movies1.json" />
+    <Content Include="js\response.js" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

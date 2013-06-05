@@ -1,70 +1,54 @@
 'use strict';
 
-/* Directives */
-angular.module('myApp.directives', [])
-    .directive('eatClick', function () {
-        return function (scope, element, attrs) {
-            $(element).click(function (event) {
-                event.preventDefault();
-            });
-        };
-    })    
-    .directive('navBar', [function () {
-        return {
-            restrict: "E",
-            transclude: true,
-            templateUrl: 'partials/directives/navBar.html'
-        };
-    }])
-    .directive('suggestionControl',['SearchService', function(SearchService) {
-        return {
-            scope: {
-                suggestion: "="
-            },
-            restrict: "E",
-            templateUrl: "partials/directives/suggestion.html",
-            link: function(scope, element, attributes) {
-                    scope.setSuggestion = function(suggestion) {
-                        SearchService.searchTerms = suggestion;
-                        SearchService.search(suggestion);
+angular.module('app.directives', [])
+    .directive('searchbox', ['SearchService', function (SearchService) {
+       return {
+                restrict: "E",
+                templateUrl: "partials/directives/searchbox.html",
+                controller: function($scope){                
+                    $scope.service = SearchService;                
+                    $scope.submit = function(){                  
+                      SearchService.search();
                     };
-            }
-        };
+                }            
+            };
     }])
-    .directive('facetControl',['SearchService',function(SearchService) {
-        return {
-            scope: {
-                facet: "="
-            },
-            restrict: "E",
-            templateUrl: "partials/directives/facet.html",
-            link: function(scope, element, attributes) {
-                scope.setFacet = function (facet, facetValue) {
-                    facet.isActive = true;
-                    SearchService.setFacet(facet, facetValue);
-                };
-                scope.removeFacet = function(element) {
-                    console.log(element);
-                };
-            }
-        };
-    }])
-    .directive('searchBox', ['SearchService', function (SearchService) {        
+    .directive('pages', [function () {
         return {
             restrict: "E",
-            link: function (scope, element, attributes) {
-
-                scope.searchTerms = SearchService.searchTerms;
-
-                scope.processing = function () {
-                      return SearchService.processing();
+            templateUrl: "partials/directives/pagination.html",
+            controller: ['$scope', 'SearchService', function($scope, SearchService) {
+                $scope.service = SearchService;
+            }]
+        };
+    }])
+    .directive('navbar', [function () {
+        return {
+            restrict: "E",
+            templateUrl: "partials/directives/navbar.html",
+            transclude: true
+        };
+    }])
+    .directive('facets', [function () {
+        return {
+            restrict: "E",
+            templateUrl: "partials/directives/facets.html",
+            controller: ['$scope', 'SearchService', function($scope, SearchService) {
+                $scope.SearchService = SearchService;
+            }]
+        };
+    }])
+    .directive('suggestions', ['SearchService', function (SearchService) {
+        return {
+            restrict: "E",
+            templateUrl: "partials/directives/suggestions.html",
+            controller: function($scope) {
+                $scope.SearchService = SearchService;
+                $scope.suggestions = SearchService.suggestions;
+                $scope.searchSuggestion = function(item) {
+                    SearchService.searchTerms = item;
+                    SearchService.search();
                 };
-
-                scope.submit = function () {
-                    SearchService.search(scope.searchTerms);
-                };
-            },
-            templateUrl: 'partials/directives/searchBox.html'
+            }
         };
     }]);
-

@@ -1,10 +1,14 @@
 <form class="form-search" style="margin: 0px; padding-top: 5px;" ng-submit="submit()">
     <div class="input-append">
-        <input ng-model="searchTerms" type="text" class="span3 search-query" placeholder="Search..." >
-        <button type="submit" class="btn">
-            <i class="icon-spinner icon-spin  icon-large" ng-show="processing()"></i>
-            
-            Search             
+        <input 
+          ng-model="service.searchTerms" 
+          type="text" 
+          class="span3 search-query " 
+          placeholder="Search..." ng-disabled="service.processing()" >
+        <button type="submit" class="btn" ng-disabled="service.processing()" >
+            <i class="icon-spinner icon-spin  icon-large" ng-show="service.processing()"></i>
+            <em ng-show="service.processing()">Searching</em>
+            <span ng-hide="service.processing()">Search</span>
         </button>
         
     </div>

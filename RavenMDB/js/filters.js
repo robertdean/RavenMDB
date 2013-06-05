@@ -1,7 +1,7 @@
 'use strict';
 
 /* Filters */
-angular.module('myApp.filters', [])
+angular.module('app.filters', [])
     .filter('titleize', [function () {
         return function (text) {
             return _.str.titleize(text);

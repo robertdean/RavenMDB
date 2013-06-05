@@ -35,9 +35,9 @@ namespace RavenMDB.Controllers
                 query = query
                     .AndAlso()
                     .Where(
-                        facet.selectedValue.Contains(" ") && !facet.selectedValue.StartsWith("[Dx") 
-                        ? string.Format("{0}:\"{1}\"", facet.facet, facet.selectedValue) 
-                        : string.Format("{0}:{1}", facet.facet, facet.selectedValue));
+                        facet.facetFilterValue.Contains(" ") && !facet.facetFilterValue.StartsWith("[Dx")
+                        ? string.Format("{0}:\"{1}\"", facet.facetName, facet.facetFilterValue)
+                        : string.Format("{0}:{1}", facet.facetName, facet.facetFilterValue));
             }
 
             var facets = query.ToFacets("facets/MovieFacets");
@@ -82,8 +82,8 @@ namespace RavenMDB.Controllers
 
     public class FacetedFilter
     {
-        public string facet { get; set; }
-        public string selectedValue { get; set; }
+        public string facetName { get; set; }
+        public string facetFilterValue { get; set; }
     }
 
     public class TitleFound

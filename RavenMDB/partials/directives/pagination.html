@@ -1,0 +1,10 @@
+<div ng-show="service.totalPages()>0">
+<pagination 
+  class="pagination-small" 
+  boundary-links="true"
+  num-pages="service.totalPages()" 
+  current-page="service.currentPage" 
+  max-size="5" 
+  previous-text="&laquo;" 
+  next-text="&raquo;"></pagination>
+</div>

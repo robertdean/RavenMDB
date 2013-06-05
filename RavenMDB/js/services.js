@@ -1,115 +1,82 @@
-'use strict';
+﻿'use strict';
 
-/* Services */
-angular.module('myApp.services', [])
-    .service('SearchService', ['$http', function ($http) {
-        var results;
-        var currentTitle;
-        var currentPage = 1;
-        var currentPageSize = 10;
-        var resultsFound = 0;
-        var selectedFacets=[];
-        var searchTerms;
-        var processing = false;
-        var pages = [];
-            
-        var fetchData = function(){
-           var req = $http.post("api/movie", {
-                    q: searchTerms,
-                    facets: selectedFacets,
-                    currentPage: currentPage,
-                    pageSize: currentPageSize
-                });
-                req.success(function (data) {
-                    processing=false;
-                    results = data;                    
-                    resultsFound = data.Stats.TotalResults;
-                    prepPages();
-                });  
-        };
+angular.module('app.services', [])
+    .factory('SearchService', ['$http', function ($http) {
+    var self = this;
+    self.processingIndicatorStatus = false;
 
-        var prepPages = function() {
-            for (var i = 0; i < (resultsFound + 1) ; i++) {
-                pages.push({
-                    pageNumber: (i + 1),
-                    isActive: false
-                });
+    var service = {};
+
+    service.statistics = {};
+    service.pageSize = 10;
+    service.currentPage = 1;
+    self.totalHits = 0;
+    service.searchTerms = "";
+    service.errorMessage = "";
+    service.suggestions = [];
+    service.facets = [];
+    service.selectedFacets = [];
+    service.results = [];
+
+    service.search = function () {
+        self.processingIndicatorStatus = true;
+        var req = $http.post("api/movie", {
+            q: service.searchTerms,
+            facets: service.selectedFacets,
+            currentPage: service.currentPage,
+            pageSize: service.pageSize
+        });
+
+        req.success(function (data, status) {
+            self.totalHits = data.Stats.TotalResults;
+            service.statistics = data.Stats;
+            service.suggestions = data.Suggestions;
+            service.facets = data.FacetedResults;
+            service.selectedFacets = data.FacetedFilterApplied;
+            service.results = data.TitlesFound;
+            self.processingIndicatorStatus = false;
+        });
+    };
+
+    service.processing = function () {
+        return self.processingIndicatorStatus;
+    };
+
+    service.totalPages = function () {
+        if (!self.totalHits || (self.totalHits == 0))
+            return 0;
+        var pageCount = (Math.floor(self.totalHits / service.pageSize));
+        if (self.totalHits % service.pageSize != 0) pageCount++;
+        return pageCount;
+    };
+
+    service.facetIsApplied = function (facetName, facetFilterValue) {
+        for (var i = 0; i < service.selectedFacets.length; i++) {
+            if (service.selectedFacets[i].facetName == facetName && service.selectedFacets[i].facetFilterValue == facetFilterValue) {
+                return true;
+            }
+        }
+        return false;
+    };
+
+    service.addFacet = function (facetName, facetFilterValue) {
+        var removing = false;
+        for (var i = 0; i < service.selectedFacets.length; i++) {
+            if (service.selectedFacets[i].facetName == facetName && service.selectedFacets[i].facetFilterValue == facetFilterValue) {
+                service.selectedFacets.splice(i, 1);
+                removing = true;
+            }
+        }
+        if (!removing)
+            service.selectedFacets.push({ facetName: facetName, facetFilterValue: facetFilterValue });
+    };
+
+        service.removeFacet = function(facetName, facetFilterValue) {
+            for (var i = 0; i < service.selectedFacets.length; i++) {
+                if (service.selectedFacets[i].facetName == facetName && service.selectedFacets[i].facetFilterValue == facetFilterValue) {
+                    service.selectedFacets.remove(service.selectedFacets[i]);
+                }
             }
         };
-        
-        var searchService = {
-            
-            
-            processing: function () {
-                return processing;
-            },
-
-            getPages: function (){
-                return pages;
-            },
-            
-            totalRecords: function() {
-                return resultsFound;
-            },
-            
-            setCurrentPage: function(pageNumber) {
-                currentPage = pageNumber;
-            },
-
-            getCurrenPage: function () {
-                return currentPage;
-            },
-            
-            setPageSize: function(size) {
-                currentPageSize = size;
-            },
-            
-            getPageSize: function() {
-                return currentPageSize;
-            },
-            
-            setFacet: function(facet,facetValue){
-                selectedFacets.push({ facet: facet.Name, selectedValue: facetValue.Range });
-                fetchData();
-            },
-            
-            removeFacet: function(facet,facetValue){
-                //TODO: write facet removal logic
-            },
-            
-            setResults: function (data) {
-                results = data;
-            },
-            
-            getResults: function () {
-                return results;
-            },
-            
-            find:function(id) {
-                processing=true;
-                var req = $http.get("api/movie/"+id);
-                req.success(function (data) {
-                    currentTitle = data;
-                    processing = false;
-                });
-            },
-
-            currentTitle: function () {
-                return currentTitle;
-            },
-            
-            getSearchTerms: function() {
-                return searchTerms;
-            },
-            
-            search: function (terms) {
-                processing=true;
-                searchTerms =terms;
-                fetchData();
-            }
-
-        };
-
-        return searchService;
-
+        return service;
     }]);

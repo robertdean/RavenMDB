@@ -1,0 +1,15 @@
+
+<ul class="nav nav-list">
+  <li ng-repeat="facet in SearchService.facets">      
+    <label class="tree-toggler nav-header" >{{facet.Name}}</label>
+    <ul class="nav nav-list tree">
+      <li ng-repeat="value in facet.Values.Values | orderBy:'Hits':true | limitTo:5 ">              
+        <a href="#" ng-click="SearchService.addFacet(facet.Name,value.Range)">          
+          <i class="{{ SearchService.facetIsApplied(facet.Name,value.Range) && 'icon-check' || 'icon-check-empty' }}" ></i>
+          {{value.Range}} 
+          <span class="badge pull-right">{{value.Hits}}</span>                
+        </a>
+       </li>    
+    </ul>
+  </li>
+</ul>    
