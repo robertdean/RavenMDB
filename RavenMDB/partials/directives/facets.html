@@ -6,7 +6,7 @@
       <li ng-repeat="value in facet.Values.Values | orderBy:'Hits':true | limitTo:5 ">              
         <a href="#" ng-click="SearchService.addFacet(facet.Name,value.Range)">          
           <i class="{{ SearchService.facetIsApplied(facet.Name,value.Range) && 'icon-check' || 'icon-check-empty' }}" ></i>
-          {{value.Range}} 
+          {{value.Range | rangefacet | humanize | titleize }} 
           <span class="badge pull-right">{{value.Hits}}</span>                
         </a>
        </li>    
