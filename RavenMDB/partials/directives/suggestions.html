@@ -1,6 +1,6 @@
 <div ng-show="SearchService.suggestions">
 <span>Did you mean </span>
-<span ng-repeat='item in SearchService.suggestions' ng-click='callItem'>
+<span ng-repeat='item in SearchService.suggestions | limitTo: 4 ' ng-click='callItem'>
 <span ng-hide=" $last || $first ">,</span> <span ng-show=" $last && ($index > 0) "> or </span>
 <em><a href='#' ng-click='searchSuggestion(item)'>{{item}}</a></em>
 </span><span>?</span>
