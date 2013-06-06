@@ -20,6 +20,9 @@ namespace RavenMDB.Controllers
         public SearchResult Post([FromBody] SearchRequest request )
         {
             this.AutoSave = false;
+            request.currentPage = request.currentPage == 0 ? 1 : request.currentPage;
+            request.pageSize = request.pageSize == 0 ? 10 : request.pageSize;
+
             var httpRequest = Request.Content;
             FieldHighlightings fieldHighlightings;
             var query = RavenSession.Advanced.LuceneQuery<Movie>("ComplexMovieIndex")
@@ -62,10 +65,13 @@ namespace RavenMDB.Controllers
                                                                 Highlights = fieldHighlightings.GetFragments(x.Id),
                                                                 Directors = x.Directors,
                                                                 Rated = x.Rated
-                                                            }).Take(10).ToList(),
+                                                            })
+                                                            .Skip((request.currentPage-1) * request.pageSize)
+                                                            .Take(request.pageSize).ToList(),
                            FacetedResults = facets.Results.Select(x=>new { Name=x.Key, Values = x.Value }),
                            FacetedFilterApplied = request.facets,
                            Suggestions = suggestionQuery.Suggestions,
+                           PageSize = request.pageSize,
                            Stats = stats,
                            BuildId = ConfigurationManager.AppSettings["appharbor.commit_id"]
                        };
@@ -78,6 +84,7 @@ namespace RavenMDB.Controllers
         public string q { get; set; }
         public List<FacetedFilter> facets { get; set; }
         public int currentPage { get; set; }
+        public int pageSize { get; set; }
     }
 
     public class FacetedFilter
@@ -104,7 +111,7 @@ namespace RavenMDB.Controllers
         public List<FacetedFilter> FacetedFilterApplied { get; set; }
         public IEnumerable<TitleFound> TitlesFound { get; set; }
         public string[] Suggestions { get; set; }
-
+        public int PageSize { get; set; }
         public string BuildId { get; set; }
     }
 }
