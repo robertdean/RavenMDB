@@ -23,8 +23,6 @@
     <navbar>   
       <searchbox></searchbox>
     </navbar>
-    <suggestions ></suggestions>
-    <pages></pages>
     <div class="container">
       <div class="row">
         <div ng-controller="ctrl1">
@@ -33,6 +31,8 @@
           <facets></facets>
         </div>
         <div class="span9">        
+            <suggestions ></suggestions>
+            <pages></pages>        
           <div ng-controller="ctrl2">
             <div ng-repeat="result in service.results">
               <p>{{result.Title}}</p>
