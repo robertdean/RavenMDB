@@ -1,10 +1,32 @@
-﻿<div ng-controller="ResultsCtrl" class="container" >
-    <div class="row">
-        <h1>{{name}}</h1>
-        <ul>
-            <li  ng-repeat="item in results()" >
-                {{$index+1}}. {{item.Title}}
-            </li>
-        </ul>
+﻿<div ng-controller="ResultsCtrl">
+    <div ng-show="service.statistics.TotalResults">
+        <span>{{ service.statistics.TotalResults }} results</span>
+        <span ng-show="service.searchTerms">for <em ng-bind="service.searchTerms"></em></span>
     </div>
-</div> 
+    <div ng-repeat="title in service.results">
+            <div class="container-fluid">
+                <div class="row-fluid">
+                    <a href="#/title/{{title.Id}}">
+        
+                    <div class="span10">
+                        <h4 ng-bind="title.Title"></h4>
+                    </div>
+                    <div class="span2">
+                        <span class="badge pull-right" ng-bind="title.Score"></span>
+                    </div></a>
+                </div>
+                <div class="row-fluid">
+                    <div class="span12">
+                        {{ title.PlotSimple }}
+                    </div>
+                </div>
+                <div class="row-fluid">
+                    <div class="span12" >
+                        <blockquote ng-repeat="subItem in title.Highlights">
+                            &hellip; <span ng-bind-html="subItem"></span> 
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>

@@ -15,6 +15,7 @@
     <script src="js/lib/angular-ui.js" type="text/javascript"></script>
     <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.3.0.min.js" type="text/javascript"></script>
     <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
     <script src="js/directives.js"></script>
     <script src="js/services.js"></script>
     <script src="js/filters.js"></script>
@@ -25,18 +26,13 @@
     </navbar>
     <div class="container">
       <div class="row">
-        <div ng-controller="ctrl1">
-        </div>
         <div class="span3">
           <facets></facets>
         </div>
         <div class="span9">        
             <suggestions ></suggestions>
             <pages></pages>        
-          <div ng-controller="ctrl2">
-            <div ng-repeat="result in service.results">
-              <p>{{result.Title}}</p>
-            </div>
+          <div ng-view>
           </div>
           
         </div>

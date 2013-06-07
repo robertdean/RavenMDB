@@ -1,42 +1,49 @@
 ﻿'use strict';
 
 angular.module('app.services', [])
-    .factory('SearchService', ['$http', function ($http) {
-    var self = this;
-    self.processingIndicatorStatus = false;
+    .factory('SearchService', ['$http', function($http) {
+        var self = this;
+        self.processingIndicatorStatus = false;
+        var service = {};
+        service.currentTitle = {};
+        service.statistics = {};
+        service.pageSize = 10;
+        service.currentPage = 1;
+        self.totalHits = 0;
+        service.searchTerms = "";
+        service.errorMessage = "";
+        service.suggestions = [];
+        service.facets = [];
+        service.selectedFacets = [];
+        service.results = [];
 
-    var service = {};
+        service.find = function(id) {
+            $http
+                .get("/api/movie/" + id)
+                .success(function(data) {
+                    service.currentTitle = data;
+                });
+        };
+        
+        service.search = function() {
+            self.processingIndicatorStatus = true;
+            var req = $http.post("api/movie", {
+                q: service.searchTerms,
+                facets: service.selectedFacets,
+                currentPage: service.currentPage,
+                pageSize: service.pageSize
+            });
 
-    service.statistics = {};
-    service.pageSize = 10;
-    service.currentPage = 1;
-    self.totalHits = 0;
-    service.searchTerms = "";
-    service.errorMessage = "";
-    service.suggestions = [];
-    service.facets = [];
-    service.selectedFacets = [];
-    service.results = [];
-
-    service.search = function () {
-        self.processingIndicatorStatus = true;
-        var req = $http.post("api/movie", {
-            q: service.searchTerms,
-            facets: service.selectedFacets,
-            currentPage: service.currentPage,
-            pageSize: service.pageSize
-        });
-
-        req.success(function (data, status) {
-            self.totalHits = data.Stats.TotalResults;
-            service.statistics = data.Stats;
-            service.suggestions = data.Suggestions;
-            service.facets = data.FacetedResults;
-            service.selectedFacets = data.FacetedFilterApplied;
-            service.results = data.TitlesFound;
-            self.processingIndicatorStatus = false;
-        });
-    };
+            req.success(function(data, status) {
+                self.totalHits = data.Stats.TotalResults;
+                service.statistics = data.Stats;
+                service.suggestions = data.Suggestions;
+                service.facets = data.FacetedResults;
+                service.selectedFacets = data.FacetedFilterApplied;
+                service.results = data.TitlesFound;
+                self.processingIndicatorStatus = false;
+            });
+        };
 
     service.processing = function () {
         return self.processingIndicatorStatus;
