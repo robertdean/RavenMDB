@@ -16,7 +16,8 @@ angular.module('app.services', [])
         service.facets = [];
         service.selectedFacets = [];
         service.results = [];
-
+        service.buildId = "";
+        
         service.find = function(id) {
             $http
                 .get("/api/movie/" + id)
@@ -41,6 +42,7 @@ angular.module('app.services', [])
                 service.facets = data.FacetedResults;
                 service.selectedFacets = data.FacetedFilterApplied;
                 service.results = data.TitlesFound;
+                service.buildId = data.BuildId;
                 self.processingIndicatorStatus = false;
             });
         };

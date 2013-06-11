@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html >
-
   <head >
     <meta charset="utf-8" />
     <title>Raven Search Form</title>
@@ -24,20 +23,24 @@
     <navbar>   
       <searchbox></searchbox>
     </navbar>
-    <div class="container">
-      <div class="row">
-        <div class="span3">
-          <facets></facets>
-        </div>
-        <div class="span9">        
-            <suggestions ></suggestions>
-            <pages></pages>        
-              <div ng-view>
+      <div class="container">
+          <div class="row">
+              <div class="span3">
+                  <facets></facets>
               </div>
-          
-        </div>
+              <div class="span9">        
+                  <suggestions ></suggestions>
+                  <pages></pages>        
+                  <div ng-view>
+                  </div>
+              </div>
+          </div>
       </div>
-    </div>
+      <div class="navbar navbar-fixed-bottom">
+          <div class="navbar-inner">
+              <stats></stats>
+          </div>
+      </div>
   </body>
 
 </html>

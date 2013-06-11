@@ -13,6 +13,15 @@ angular.module('app.directives', [])
                 }            
             };
     }])
+    .directive('stats',[function() {
+        return {
+            restrict: "E",
+            templateUrl: "partials/directives/stats.html",
+            controller: ['$scope','SearchService',function ($scope,SearchService) {                
+                $scope.SearchService = SearchService;
+            }]
+        };
+    }])
     .directive('pages', [function () {
         return {
             restrict: "E",
