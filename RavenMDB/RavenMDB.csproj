@@ -133,6 +133,7 @@
     <Content Include="partials\directives\old\suggestion.html" />
     <Content Include="partials\directives\pagination.html" />
     <Content Include="partials\directives\searchbox.html" />
+    <Content Include="partials\directives\stats.html" />
     <Content Include="partials\directives\suggestions.html" />
     <Content Include="partials\editTitle.html" />
     <Content Include="partials\results.html" />
