@@ -64,4 +64,5 @@ packages/
 #Test files
 *.testsettings
 
-.c9revisions*/
+#cloud9IDE revs
+.c9revisions/
