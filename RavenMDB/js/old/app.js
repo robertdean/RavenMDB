@@ -7,5 +7,5 @@ angular.module('myApp', ['myApp.filters', 'myApp.services', 'myApp.directives', 
       $routeProvider.when('/title/:id', { templateUrl: 'partials/details.html', controller: 'DetailsCtrl' });
     $routeProvider.otherwise({redirectTo: '/'});
 } ]).run(['SearchService',function(SearchService){
-    
+    SearchService.search("");
 }]);
