@@ -24,7 +24,7 @@ angular.module('app.filters', [])
     }])
     .filter('rangefacet', [function () {
         return function(text) {
-            return text.replace(/Dx|\[|\]/g, "");
+            return text.replace(/Dx|\[|\]|\}/g, "");
         };
     }]);
 
