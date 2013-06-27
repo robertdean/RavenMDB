@@ -1,11 +1,11 @@
 <div class="well">
-    <h4 ng-model="service.currentTitle.Title"> {{ service.currentTitle.Title  }} </h4>
+    <h4 ng-model="service.currentTitle.Title">{{service.currentTitle.Title}}</h4>
     <p ng-model="service.currentTitle.plot_simple"></p>
     <div class="row">
         <div class="span3">
             <dl>
                 <dt>Actors</dt>
-                <dd ng-repeat="actor in service.currentTitle.Actors"></dd>
+                <dd ng-repeat="actor in service.currentTitle.Actors">{{actor}}</dd>
             </dl>            
         </div>
     </div>
