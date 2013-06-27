@@ -3,7 +3,7 @@
         <span>{{ service.statistics.TotalResults }} results</span>
         <span ng-show="service.searchTerms">for <em ng-bind="service.searchTerms"></em></span>
     </div>
-    <div ng-repeat="title in service.results" ng-animate="{ enter: 'animated lightSpeedIn' }">
+    <div ng-repeat="title in service.results" >
             <div class="container-fluid">
                 <div class="row-fluid">
                     <a href="#/title/{{title.Id}}">
