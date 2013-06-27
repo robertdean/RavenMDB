@@ -8,6 +8,6 @@ var app = angular.module('app',
         $routeProvider.when('/title/:id', { templateUrl: 'partials/details.html', controller: 'DetailsCtrl' });
         $routeProvider.otherwise({ redirectTo: '/' });
     }])
-    .run(['SearchService'],function(SearchService){
+    .run(['SearchService',function(SearchService){
         SearchService.search();
-    });
+    }]);
