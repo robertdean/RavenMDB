@@ -3,7 +3,7 @@
 angular.module('app.controllers', ['ngSanitize'])
     .controller('DetailsCtrl', ['$scope', '$routeParams', 'SearchService', function ($scope, $routeParams, SearchService) {
         $scope.service = SearchService;
-        
+        $scope.service.find($routeParams.id);        
     }])
     .controller('ResultsCtrl', ['$scope', 'SearchService', function ($scope, SearchService) {
         $scope.service = SearchService;
