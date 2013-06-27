@@ -19,16 +19,17 @@ angular.module('app.services', [])
         service.buildId = "";
         
         service.find = function(id) {
-            $http
+            var promise = $http
                 .get("/api/movie/" + id)
-                .success(function(data) {
-                    console.log(data);
+                .success(function(data) {                    
                     service.currentTitle = data;
                 });
+            return promise;    
         };
         
-        service.search = function() {
+        service.search = function() {            
             self.processingIndicatorStatus = true;
+            
             var req = $http.post("api/movie", {
                 q: service.searchTerms,
                 facets: service.selectedFacets,
