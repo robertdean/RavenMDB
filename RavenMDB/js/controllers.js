@@ -1,9 +1,8 @@
-﻿'use strict';
+'use strict';
 /* Controllers */
 angular.module('app.controllers', ['ngSanitize'])
     .controller('DetailsCtrl', ['$scope', '$routeParams', 'SearchService', function ($scope, $routeParams, SearchService) {
-        $scope.service = SearchService;
-        SearchService.find($routeParams.id);
+        $scope.service = SearchService;        
     }])
     .controller('ResultsCtrl', ['$scope', 'SearchService', function ($scope, SearchService) {
         $scope.service = SearchService;

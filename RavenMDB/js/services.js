@@ -1,4 +1,4 @@
-﻿'use strict';
+'use strict';
 
 angular.module('app.services', [])
     .factory('SearchService', ['$http', function($http) {
@@ -22,6 +22,7 @@ angular.module('app.services', [])
             $http
                 .get("/api/movie/" + id)
                 .success(function(data) {
+                    console.log(data);
                     service.currentTitle = data;
                 });
         };
