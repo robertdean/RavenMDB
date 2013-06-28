@@ -18,9 +18,10 @@ namespace RavenMDB
         public string[] Writers { get; set; }
         public string[] Runtime { get; set; }
         public string Title { get; set; }
+        [JsonProperty("plot")]
+        public string Plot { get; set; }
         [JsonProperty("plot_simple")]
         public string PlotSimple { get; set; }
-        public string Plot { get; set; }
         [JsonProperty("release_date")]
         public int ReleaseDate { get; set; }
         public decimal Rating { get; set; }
