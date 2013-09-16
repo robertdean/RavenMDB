@@ -19,8 +19,7 @@ angular.module('app.services', [])
         service.buildId = "";
         
         service.find = function(id) {
-            var promise = $http
-                .get("/api/movie/" + id)
+            var promise = $http.get("/api/movie/" + id)
                 .success(function(data) {                    
                     service.currentTitle = data;
                 });
