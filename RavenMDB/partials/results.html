@@ -1,11 +1,11 @@
-<div ng-controller="ResultsCtrl" data-step="5" data-intro="Results show highlighted terms surrounded by text snippets that provide context. Snippets are pulled from the index (not the database) which speeds up the results.">
-    <div ng-show="service.statistics.TotalResults">
+<div ng-controller="ResultsCtrl" >
+    <div ng-show="service.statistics.TotalResults" >
         <span>{{ service.statistics.TotalResults }} results</span>
         <span ng-show="service.searchTerms">for <em ng-bind="service.searchTerms"></em></span>
     </div>
     <div ng-repeat="title in service.results" >
             <div class="container-fluid">
-                <div class="row-fluid">
+                <div class="row-fluid" >
                     <a href="#/title/{{title.Id}}">
         
                     <div class="span10">
