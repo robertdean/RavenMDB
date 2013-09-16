@@ -124,6 +124,7 @@
     <Content Include="js\lib\underscore.string.js" />
     <Content Include="js\old\services.js" />
     <Content Include="js\services.js" />
+    <Content Include="js\lib\intro.js" />
     <Content Include="partials\404.html" />
     <Content Include="partials\details.html" />
     <Content Include="partials\directives\facets.html" />
