@@ -1,5 +1,5 @@
 <form class="form-search" style="margin: 0px; padding-top: 5px;" ng-submit="submit()">
-    <div id="SearchBox1" class="input-append" data-step="1" data-intro="Step 1, OK?" >
+    <div id="SearchBox1" class="input-append" data-step="1" data-intro="Search box allows for Lucene query syntax, such as Title:'Some Title' AND Actors:*Nelson " >
         <input 
           ng-model="service.searchTerms" 
           type="text" 
@@ -10,6 +10,6 @@
             <em ng-show="service.processing()">Searching</em>
             <span ng-hide="service.processing()">Search</span>
         </button>
-        
+        <button type="button" class="btn btn-mini" onclick="javascript:introJs().start();"><i class="icon-info"></i></button>
     </div>
 </form>
